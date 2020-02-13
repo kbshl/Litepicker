@@ -174,6 +174,11 @@ export class DateTime extends Date {
       case 'months':
         return new Date(date.getFullYear(), date.getMonth(), 1).getTime()
           > new Date(this.getFullYear(), this.getMonth(), 1).getTime();
+
+      case 'year':
+      case 'years':
+        return new Date(date.getFullYear(), 0, 1).getTime()
+          > new Date(this.getFullYear(), 0, 1).getTime();
     }
 
     throw new Error('isBefore: Invalid unit!');
@@ -194,6 +199,11 @@ export class DateTime extends Date {
       case 'months':
         return new Date(date.getFullYear(), date.getMonth(), 1).getTime()
           >= new Date(this.getFullYear(), this.getMonth(), 1).getTime();
+
+      case 'year':
+      case 'years':
+        return new Date(date.getFullYear(), 0, 1).getTime()
+          >= new Date(this.getFullYear(), 0, 1).getTime();
     }
 
     throw new Error('isSameOrBefore: Invalid unit!');
@@ -214,6 +224,11 @@ export class DateTime extends Date {
       case 'months':
         return new Date(this.getFullYear(), this.getMonth(), 1).getTime()
           > new Date(date.getFullYear(), date.getMonth(), 1).getTime();
+
+      case 'year':
+      case 'years':
+        return new Date(this.getFullYear(), 0, 1).getTime()
+          > new Date(date.getFullYear(), 0, 1).getTime();
     }
 
     throw new Error('isAfter: Invalid unit!');
@@ -234,6 +249,11 @@ export class DateTime extends Date {
       case 'months':
         return new Date(this.getFullYear(), this.getMonth(), 1).getTime()
           >= new Date(date.getFullYear(), date.getMonth(), 1).getTime();
+
+      case 'year':
+      case 'years':
+        return new Date(this.getFullYear(), 0, 1).getTime()
+          >= new Date(date.getFullYear(), 0, 1).getTime();
     }
 
     throw new Error('isSameOrAfter: Invalid unit!');
@@ -254,6 +274,11 @@ export class DateTime extends Date {
       case 'months':
         return new Date(this.getFullYear(), this.getMonth(), 1).getTime()
           === new Date(date.getFullYear(), date.getMonth(), 1).getTime();
+
+      case 'year':
+      case 'years':
+        return new Date(this.getFullYear(), 0, 1).getTime()
+          === new Date(date.getFullYear(), 0, 1).getTime();
     }
 
     throw new Error('isSame: Invalid unit!');

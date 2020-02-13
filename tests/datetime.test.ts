@@ -79,6 +79,10 @@ test('DateTime isBefore', () => {
   // months
   dt.setMonth(dt.getMonth() - 1);
   expect(dt.isBefore(date, 'month')).toBe(true);
+
+  // years
+  dt.setFullYear(dt.getFullYear() - 1);
+  expect(dt.isBefore(date, 'year')).toBe(true);
 });
 
 test('DateTime isSameOrBefore', () => {
@@ -98,6 +102,11 @@ test('DateTime isSameOrBefore', () => {
   expect(dt.isSameOrBefore(date, 'month')).toBe(true);
   dt.setMonth(dt.getMonth() - 1);
   expect(dt.isSameOrBefore(date, 'month')).toBe(true);
+
+  // years
+  expect(dt.isSameOrBefore(date, 'year')).toBe(true);
+  dt.setFullYear(dt.getFullYear() - 1);
+  expect(dt.isSameOrBefore(date, 'year')).toBe(true);
 });
 
 test('DateTime isAfter', () => {
@@ -114,6 +123,10 @@ test('DateTime isAfter', () => {
   // months
   dt.setMonth(dt.getMonth() + 1);
   expect(dt.isAfter(date, 'month')).toBe(true);
+
+  // years
+  dt.setFullYear(dt.getFullYear() + 1);
+  expect(dt.isAfter(date, 'year')).toBe(true);
 });
 
 test('DateTime isSameOrAfter', () => {
@@ -133,6 +146,11 @@ test('DateTime isSameOrAfter', () => {
   expect(dt.isSameOrAfter(date, 'month')).toBe(true);
   dt.setMonth(dt.getMonth() + 1);
   expect(dt.isSameOrAfter(date, 'month')).toBe(true);
+
+  // years
+  expect(dt.isSameOrAfter(date, 'year')).toBe(true);
+  dt.setFullYear(dt.getFullYear() + 1);
+  expect(dt.isSameOrAfter(date, 'year')).toBe(true);
 });
 
 test('DateTime isSame', () => {
@@ -146,6 +164,9 @@ test('DateTime isSame', () => {
 
   // months
   expect(dt.isSameOrAfter(date, 'month')).toBe(true);
+
+  // years
+  expect(dt.isSameOrAfter(date, 'year')).toBe(true);
 });
 
 test('DateTime add', () => {
