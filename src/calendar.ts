@@ -200,14 +200,27 @@ export class Calendar {
         selectYears.appendChild(option);
       }
 
+      const minDateTime = this.options.minDate
+        ? new DateTime(this.options.minDate)
+        : null;
+
+      const maxDateTime = this.options.maxDate
+        ? new DateTime(this.options.maxDate)
+        : null;
+
+      const maxMinGiven = minDateTime && maxDateTime;
+
       for (let x = maxYear; x >= minYear; x -= 1) {
         const option = document.createElement('option');
-        const optionYear = new DateTime(new Date(x, 0, 1, 0, 0, 0));
+        const optionYear = new DateTime(new Date(x, 11, 31, 0, 0, 0));
+
         option.value = x;
         option.text = x;
-        option.disabled = (this.options.minDate
-          && optionYear.isBefore(new DateTime(this.options.minDate), 'month'))
-          || (this.options.maxDate && optionYear.isBefore(new DateTime(this.options.maxDate), 'month'));
+
+        option.disabled = maxMinGiven &&
+          optionYear.isBefore(minDateTime, 'year') ||
+          optionYear.isAfter(maxDateTime, 'year');
+
         option.selected = date.getFullYear() === x;
 
         selectYears.appendChild(option);
